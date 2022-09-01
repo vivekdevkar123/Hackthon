@@ -1,6 +1,6 @@
-from turtle import pos
+
 from django.shortcuts import render
-from matplotlib.style import context
+
 from .models import Post,Category
 # Create your views here.
 
