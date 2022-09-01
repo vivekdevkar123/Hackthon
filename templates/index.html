@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to : Blogger{% endblock %}
+
+{% block content %}
+{% for cat in cats %}
+<div class="card" style="width: 18rem; text-align: justify; display: inline-block;">
+    <img src="/media/{{cat.image}}" class="responsive-img center-align" style="height: fit-content; width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title">{{cat.title}}</h5>
+      <p class="card-text">{{cat.description}}</p>
+      <a href="#" class="btn btn-primary">Explore more</a>
+    </div>
+  </div>
+  {% endfor %}
+
+  {% for post in posts %}
+  <div class="card mb-3" style="display: unset;">
+      <div class="row g-0">
+        <div class="col-md-4" style=" float: left;">
+          <img src="/media/{{post.image}}" class="card-img-top responsive-img center-align" style="height: 30vh; width: 100%;">
+        </div>
+      <div class="col-md-8" style="float: right;">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content|truncatechars:160}}</p>
+          <a href="#" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+{% endblock %}
