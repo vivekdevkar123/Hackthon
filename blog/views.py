@@ -1,6 +1,7 @@
-from turtle import pos
+
+from cherrypy import url
 from django.shortcuts import render
-from matplotlib.style import context
+
 from .models import Post,Category
 # Create your views here.
 
@@ -35,9 +36,14 @@ def blogs(request):
 
 
 
-def category(request):
-    context = {
+def category(request,url):
 
+    cat = Category.objects.get(url = url)
+    posts = Post.objects.filter(cat=cat)
+
+    context = {
+        'cat':cat,
+        'posts':posts,
     }
-    return render(request,'bloglist.html',context)
+    return render(request,'category.html',context)
 
