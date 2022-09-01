@@ -1,5 +1,6 @@
 from turtle import pos
 from django.shortcuts import render
+from matplotlib.style import context
 from .models import Post,Category
 # Create your views here.
 
@@ -14,17 +15,21 @@ def home(request):
 
 
 
-def post(request):
+def post(request, url):
+    post = Post.objects.get(url = url)
+    cats = Category.objects.all()
     context = {
-
+        'post' : post,
+        'cats' : cats,
     }
-    return render(request,'post.html',context)
+    return render(request, 'post.html',context)
 
 
 
 def blogs(request):
+    posts = Post.objects.all()
     context = {
-
+        'posts':posts,
     }
     return render(request,'blogs.html',context)
 
