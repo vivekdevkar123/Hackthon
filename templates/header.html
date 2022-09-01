@@ -1,0 +1,40 @@
+<style>
+  nav ul a:hover {
+      color: white;
+  }
+</style>
+
+
+<ul id="dropdown1" class="dropdown-content">
+
+  {% for cat in cats %}
+  <h1>{{cat.title}}</h1>
+
+  <li><a href="/category/{{cat.url}}">{{cats.title}}</a></li>
+
+  {% endfor%}
+</ul>
+<nav class="bg-success">
+  <div class="container">
+      <div class="nav-wrapper">
+          <a href="/" class="brand-logo">Blogger</a>
+          <ul class="right hide-on-med-and-down">
+              <li class="title"><a href="/blogs">Blogs</a></li>
+              <li class="title"><a href="/admin">admin</a></li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Category
+                </a>
+                <ul class="dropdown-menu">
+                  {% for cat in cats %}
+                  <li><a class="dropdown-item" href="/category/{{cat.url}}">{{cat.title}}</a></li>
+                  {% endfor %}
+                  <li><hr class="dropdown-divider"></li>
+                  
+                </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
